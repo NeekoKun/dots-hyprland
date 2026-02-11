@@ -7,8 +7,12 @@ if [[ -z "${dispatcher}" || "${dispatcher}" == "--help" || "${dispatcher}" == "-
   echo "Usage: $0 <dispatcher> <target>"
   exit 1
 fi
+
 if [[ "$1" == *"+"* || "$1" == *"-"* ]]; then ## Is this something like r+1 or -1?
   hyprctl dispatch "${dispatcher}" "$1" ## $1 = workspace id since we shifted earlier.
+elif [[ "$1" == *"d"* ]]; then
+  suffix=${1:1}
+  hyprctl dispatch "${dispatcher}" "$(( ((curr_workspace - 1) % 10) + 1 + 10 * suffix ))"
 elif [[ "$1" =~ ^[0-9]+$ ]]; then ## Is this just a number?
   target_workspace=$((((curr_workspace - 1) / 10 ) * 10 + $1))
   hyprctl dispatch "${dispatcher}" "${target_workspace}"
