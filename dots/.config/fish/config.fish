@@ -30,4 +30,7 @@ end
 alias cd=z
 alias cdi=zi
 
+alias cpf="rsync --progress --human-readable --perms --times"
+alias cpd="rsync --progress --human-readable --perms --times --recursive"
+
 zoxide init fish | source
