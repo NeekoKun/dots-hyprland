@@ -212,7 +212,7 @@ Singleton {
                 }
                 property string wallpaperPath: ""
                 property string thumbnailPath: ""
-                property bool hideWhenFullscreen: true
+                property bool hideWhenFullscreen: false // Trying to stop from unloading qs UI
                 property JsonObject parallax: JsonObject {
                     property bool vertical: false
                     property bool autoVertical: false
@@ -411,7 +411,7 @@ Singleton {
             }
 
             property JsonObject overlay: JsonObject {
-                property bool openingZoomAnimation: true
+                property bool openingZoomAnimation: false
                 property bool darkenScreen: true
                 property real clickthroughOpacity: 0.8
                 property JsonObject floatingImage: JsonObject {
