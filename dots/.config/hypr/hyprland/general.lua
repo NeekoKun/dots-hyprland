@@ -1,8 +1,15 @@
 -- MONITOR CONFIG
 hl.monitor({
-    output = "",
-    mode = "preferred",
-    position = "auto",
+    output = "eDP-1",
+    mode = "1920x1200@60",
+    position = "0x0",
+    scale = "1"
+})
+
+hl.monitor({
+    output = "DP-1",
+    mode = "1920x1080@60",
+    position = "1920x60",
     scale = "1"
 })
 
@@ -254,17 +261,20 @@ hl.animation({
 
 hl.config({
     input = {
-        kb_layout = "us",
+        kb_layout = "it",
         numlock_by_default = true,
         repeat_delay = 250,
         repeat_rate = 35,
+
+        sensitivity = 0.7,
+        accel_profile = "flat",
 
         follow_mouse = 1,
         off_window_axis_events = 2,
 
         touchpad = {
-            natural_scroll = true,
-            disable_while_typing = true,
+            natural_scroll = false,
+            disable_while_typing = false,
             clickfinger_behavior = true,
             scroll_factor = 0.7
         }

@@ -14,6 +14,7 @@ hl.on("hyprland.start", function ()
 
     -- Audio
     hl.exec_cmd("easyeffects --hide-window --service-mode")
+    hl.exec_cmd("pipewire & pipewire-pulse & wireplumber")
 
     -- Clipboard: history
     --hl.exec_cmd("wl-paste --watch cliphist store")

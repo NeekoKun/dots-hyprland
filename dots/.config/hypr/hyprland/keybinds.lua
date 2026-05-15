@@ -151,11 +151,23 @@ for i = 1, 10 do
         hl.dispatch(hl.dsp.window.move({ workspace = workspace_in_group(i), follow = false }))
     end)
 end
---# keypad numbers
+
+local function workspace_in_keypad_tens(n)
+    -- n expected 0..9 where 0 maps to the 1-10 block (ones digit preserved)
+    local curr = hl.get_active_workspace().id
+    local ones = ((curr - 1) % workspaceGroupSize) + 1
+    if n == 0 then
+        return ones
+    end
+    return n * workspaceGroupSize + ones
+end
+
+-- keypad numbers
 for i = 1, 10 do
-    local numpadkey = { 87, 88, 89, 83, 84, 85, 79, 80, 81, 90 }
+    -- array starts with keypad 0 then 1..9 so we can pass (i-1) to the helper
+    local numpadkey = { 90, 87, 88, 89, 83, 84, 85, 79, 80, 81 }
     hl.bind("SUPER + ALT + code:" .. numpadkey[i], function()
-        hl.dispatch(hl.dsp.window.move({ workspace = workspace_in_group(i), follow = false }))
+        hl.dispatch(hl.dsp.window.move({ workspace = workspace_in_keypad_tens(i - 1), follow = false }))
     end)
 end
 
@@ -190,11 +202,12 @@ for i = 1, 10 do
         hl.dispatch(hl.dsp.focus({ workspace = workspace_in_group(i) }))
     end)
 end
+
 --# keypad numbers
 for i = 1, 10 do
-    local numpadkey = { 87, 88, 89, 83, 84, 85, 79, 80, 81, 90 }
+    local numpadkey = { 90, 87, 88, 89, 83, 84, 85, 79, 80, 81 }
     hl.bind("SUPER + code:" .. numpadkey[i], function()
-        hl.dispatch(hl.dsp.focus({ workspace = workspace_in_group(i) }))
+        hl.dispatch(hl.dsp.focus({ workspace = workspace_in_keypad_tens(i - 1) }))
     end)
 end
 
