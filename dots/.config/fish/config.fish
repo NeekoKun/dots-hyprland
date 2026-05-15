@@ -32,6 +32,21 @@ if status is-interactive
     end
 end
 
+set -g _cmd_start_time 0
+set -g _notify_threshold 10  # seconds
+
+function _preexec --on-event fish_preexec
+    set _cmd_start_time (date +%s)
+end
+
+function _precmd --on-event fish_postexec
+    set elapsed (math (date +%s) - $_cmd_start_time)
+    if test $elapsed -ge $_notify_threshold
+        paplay /usr/share/sounds/freedesktop/stereo/complete.oga &>/dev/null &
+    end
+    set _cmd_start_time 0
+end
+
 alias cd=z
 alias cdi=zi
 
