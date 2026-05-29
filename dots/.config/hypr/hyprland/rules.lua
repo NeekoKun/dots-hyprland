@@ -7,6 +7,7 @@ hl.window_rule({match = {class = "^()$", title = "^()$" },                   no_
 hl.window_rule({match = {class = ".*" }, no_blur = true })
 
 -- Floating
+hl.window_rule({match = {title = "^(Qalculate!)$" },                         float = true})
 hl.window_rule({match = {title = "^(Open File)(.*)$" },                      center = true})
 hl.window_rule({match = {title = "^(Open File)(.*)$" },                      float = true})
 hl.window_rule({match = {title = "^(Select a File)(.*)$" },                  center = true})
