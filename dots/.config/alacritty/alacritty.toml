@@ -6,6 +6,8 @@ size = 11.0
 normal = { family = "JetBrains Mono Nerd Font", style = "Regular" }
 
 [window]
-opacity = 0.2
+opacity = 0.1
 
-padding = { x = 16, y = 8 }
+padding = { x = 22, y = 34 }
+
+[terminal]
