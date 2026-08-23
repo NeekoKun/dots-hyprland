@@ -14,13 +14,15 @@ hl.on("hyprland.start", function ()
 
     -- Audio
     hl.exec_cmd("easyeffects --hide-window --service-mode")
-    hl.exec_cmd("pipewire & pipewire-pulse & wireplumber")
 
     -- Clipboard: history
     --hl.exec_cmd("wl-paste --watch cliphist store")
-    hl.exec_cmd("wl-paste --type text --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update'")
-    hl.exec_cmd("wl-paste --type image --watch bash -c 'cliphist store && qs -c $qsConfig ipc call cliphistService update'")
+    hl.exec_cmd("wl-paste --type text --watch bash -c 'cliphist store -max-store-size 30MB && qs -c $qsConfig ipc call cliphistService update'")
+    hl.exec_cmd("wl-paste --type image --watch bash -c 'cliphist store -max-store-size 30MB && qs -c $qsConfig ipc call cliphistService update'")
 
     -- Cursor
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
+
+    -- Input Manager
+    hl.exec_cmd("fcitx5 -d")
 end)

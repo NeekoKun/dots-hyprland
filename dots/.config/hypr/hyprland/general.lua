@@ -13,6 +13,13 @@ hl.monitor({
     scale = "1"
 })
 
+hl.monitor({
+    output = "HDMI-A-1",
+    mode = "1920x1080@60",
+    position = "0x-1080",
+    scale = "1"
+})
+
 hl.gesture({
     fingers = 3,
     direction = "swipe",
